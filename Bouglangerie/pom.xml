@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>projet.android</groupId>
-    <artifactId>Bouglangerie</artifactId>
+    <artifactId>Boulangerie</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Bouglangerie</name>
+    <name>Boulangerie</name>
 
     <build>
-        <finalName>Bouglangerie</finalName>
+        <finalName>Boulangerie</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
