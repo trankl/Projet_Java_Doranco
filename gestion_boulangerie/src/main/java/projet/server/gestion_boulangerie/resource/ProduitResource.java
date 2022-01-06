@@ -112,4 +112,16 @@ public class ProduitResource {
 		return service.findByName(name);
 	}
 	
+
+	//cette methode a definit la partie de l'url d'acces a webservice sous path //findAllProduitsbyIDCategorie/{id}
+	//elle s'utilise avec GET
+	//elle prend du JSON en entree
+	@Path("/findAllProduitsbyIDCategorie/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Produit> getListeProduitsCategorieByID (@PathParam("id") int id) throws Exception {
+		// On demande au service d'executer la methode "findById(id)" et retour la categorie avec id recherche
+		return service.findListProduitByCategorieID(id);
+	}
+
 }

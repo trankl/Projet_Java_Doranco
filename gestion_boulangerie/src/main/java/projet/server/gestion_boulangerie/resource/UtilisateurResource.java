@@ -75,7 +75,7 @@ public class UtilisateurResource {
 		boolean resultal = false;
 		
 		try {
-		// On demande au service d'executer la methode "remove" 
+		// On demande au service d'executer la methode "remove" 	aaaaazaaaaaaa	
 		service.removeUtilisateur(id);
 		resultal = true;
 		return resultal;

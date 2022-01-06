@@ -2,9 +2,12 @@ package gestion_boulangerie;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import projet.server.gestion_boulangerie.model.Categorie;
+import projet.server.gestion_boulangerie.model.Produit;
 import projet.server.gestion_boulangerie.service.CategorieService;
 import projet.server.gestion_boulangerie.service.MPService;
 import projet.server.gestion_boulangerie.service.ProduitService;
@@ -68,5 +71,7 @@ class Test_case_categorie {
 	    }
 	    
 	    */
+	    
+	   
 }
 
