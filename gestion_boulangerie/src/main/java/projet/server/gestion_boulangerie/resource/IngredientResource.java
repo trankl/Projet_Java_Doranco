@@ -11,7 +11,9 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import projet.server.gestion_boulangerie.model.Ingredient;
+import projet.server.gestion_boulangerie.model.MatierePremiere;
 import projet.server.gestion_boulangerie.service.IngredientService;
+import projet.server.gestion_boulangerie.service.MPService;
 
 
 @Path ("/ingredient")
@@ -25,6 +27,7 @@ public class IngredientResource {
 	}
 
 	private IngredientService service = new IngredientService();
+	private MPService mpService = new MPService();
 
 	//cette methode a definit la partie de l'url d'acces a webservice sous path /getAllIngredients
 	//elle s'utilise avec GET
@@ -46,8 +49,17 @@ public class IngredientResource {
 	@POST  
 	@Consumes(MediaType.APPLICATION_JSON) 
 	public Ingredient addIngredient (Ingredient ingredient) throws Exception {
+		
+		Ingredient ingredientDB= service.insertIngredient(ingredient);
+		
+		MatierePremiere mp = mpService.findById(ingredient.getMp_id());
+		
+		mp.updateQuantiteDuMP(ingredient.getIngredient_quantite());
+		
+		mpService.updateMatierePremiere(mp, mp.getMp_id());
+		
 		// On demande au service d'executer la methode "insertIngredient" et retour ingredient
-		return service.insertIngredient(ingredient);
+		return ingredientDB;
 	}	
 
 

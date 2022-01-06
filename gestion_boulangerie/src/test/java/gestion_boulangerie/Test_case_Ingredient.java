@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import projet.server.gestion_boulangerie.model.Ingredient;
 import projet.server.gestion_boulangerie.model.MatierePremiere;
+import projet.server.gestion_boulangerie.resource.IngredientResource;
 import projet.server.gestion_boulangerie.service.IngredientService;
 import projet.server.gestion_boulangerie.service.MPService;
 import projet.server.gestion_boulangerie.service.ProduitService;
@@ -18,7 +19,28 @@ class Test_case_Ingredient {
 	private IngredientService ingredientService = new IngredientService();
 	private MPService mpService = new MPService();
 	private ProduitService produitService = new ProduitService();
+	private IngredientResource ingredientResource = new IngredientResource();
 	/*
+	@Test
+	public void WhenCreateNewIngredient_thenUpdateQuantiteMP() throws Exception {
+		
+		Ingredient i = new Ingredient(5, 5, 400, "ml");
+		
+		MatierePremiere mp = mpService.findById(i.getMp_id());
+		int mp_quantite= mp.getMp_quantite();
+		
+		Ingredient idb= ingredientResource.addIngredient(i);
+		System.out.println(idb);
+		
+		MatierePremiere newMP = mpService.findById(idb.getMp_id());
+		
+		assertEquals(mp_quantite-400, newMP.getMp_quantite());
+		
+		System.out.println("Test CREATE INGREDIENT -> OK");
+		
+	}
+	
+	
 	@Test
 	public void WhenFindListsDesIngredients() throws Exception {
 		

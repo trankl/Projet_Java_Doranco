@@ -64,62 +64,40 @@ public class MatierePremiere  implements Serializable{
 		this.mp_marque = mp_marque;
 	}
 
-
-	public String getMp_nom() {
-		return mp_nom;
+	// Methode pour modifier quantite du MP quand on ajouter ingredient du produit 
+	public int updateQuantiteDuMP(int valeurAReduit) {
+		this.mp_quantite -= valeurAReduit;
+		return this.mp_quantite;
 	}
+	
+	
+	// Getter et setter
+	public String getMp_nom() {return mp_nom;}
 
-	public void setMp_nom(String mp_nom) {
-		this.mp_nom = mp_nom;
-	}
+	public void setMp_nom(String mp_nom) {this.mp_nom = mp_nom;}
 
-	public int getMp_quantite() {
-		return mp_quantite;
-	}
+	public int getMp_quantite() {return mp_quantite;}
 
-	public void setMp_quantite(int mp_quantite) {
-		this.mp_quantite = mp_quantite;
-	}
+	public void setMp_quantite(int mp_quantite) {this.mp_quantite = mp_quantite;}
 
-	public String getMp_unite() {
-		return mp_unite;
-	}
+	public String getMp_unite() {return mp_unite;}
 
-	public void setMp_unite(String mp_unite) {
-		this.mp_unite = mp_unite;
-	}
+	public void setMp_unite(String mp_unite) {this.mp_unite = mp_unite;}
 
-	public String getMp_marque() {
-		return mp_marque;
-	}
+	public String getMp_marque() {return mp_marque;}
 
-	public void setMp_marque(String mp_marque) {
-		this.mp_marque = mp_marque;
-	}
+	public void setMp_marque(String mp_marque) {this.mp_marque = mp_marque;}
 
-	public Double getMp_prix() {
-		return mp_prix;
-	}
+	public Double getMp_prix() {return mp_prix;}
+
+	public void setMp_prix(Double mp_prix) {this.mp_prix = mp_prix;}
+
+	public int getMp_id() {return mp_id;}
 
 
-	public void setMp_prix(Double mp_prix) {
-		this.mp_prix = mp_prix;
-	}
+	public List<Produit> getListeProduits() {return listeProduits;}
 
-
-	public int getMp_id() {
-		return mp_id;
-	}
-
-
-	public List<Produit> getListeProduits() {
-		return listeProduits;
-	}
-
-
-	public void setListeProduits(List<Produit> listeProduits) {
-		this.listeProduits = listeProduits;
-	}
+	public void setListeProduits(List<Produit> listeProduits) {this.listeProduits = listeProduits;}
 	
 	
 	
