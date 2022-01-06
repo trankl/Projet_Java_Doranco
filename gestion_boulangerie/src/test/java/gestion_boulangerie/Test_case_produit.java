@@ -2,6 +2,8 @@ package gestion_boulangerie;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import projet.server.gestion_boulangerie.model.Produit;
@@ -85,7 +87,7 @@ class Test_case_produit {
 	    
 	    System.out.println("test DELETE 1 PRODUCT with its ingredients -> OK");
 	}
-	*/
+	
 	
 	@Test
 	void whenFindProduitByName() throws Exception {
@@ -98,5 +100,17 @@ class Test_case_produit {
 		
 		System.out.println("Test FIND 1 PRODUCT BY NAME --> OK");
 	}
-
+*/
+    
+    @Test
+	void whenFindListProduitByCategorieID() throws Exception {
+		
+		int id = 4;
+		
+		List<Produit> listProduit = produitService.findListProduitByCategorieID(id);
+		
+		assertEquals(4, listProduit.size());
+    	System.out.println("Test GET LIST PRODUIT DU CATEGORIE -> OK");
+	}
+    
 }
