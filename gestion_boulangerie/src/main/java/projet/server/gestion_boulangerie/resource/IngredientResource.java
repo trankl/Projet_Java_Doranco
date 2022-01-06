@@ -16,29 +16,29 @@ import projet.server.gestion_boulangerie.service.IngredientService;
 
 @Path ("/ingredient")
 public class IngredientResource {
-	
-	  
-	    @GET
-	    @Produces(MediaType.TEXT_PLAIN)
-	    public String getIt() {
-	        return "Got it!";
-	    }
+
+
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getIt() {
+		return "Got it!";
+	}
 
 	private IngredientService service = new IngredientService();
-	
+
 	//cette methode a definit la partie de l'url d'acces a webservice sous path /getAllIngredients
-		//elle s'utilise avec GET
-		//elle prend du JSON en entree
-		@Path ("/getAllIngredients")
-		@GET  
-		@Produces(MediaType.APPLICATION_JSON) 
-		public List<Ingredient> getAllIngredient () throws Exception {
+	//elle s'utilise avec GET
+	//elle prend du JSON en entree
+	@Path ("/getAllIngredients")
+	@GET  
+	@Produces(MediaType.APPLICATION_JSON) 
+	public List<Ingredient> getAllIngredient () throws Exception {
 		// On demande au service d'executer la methode "getAll" et retour la liste
 		return service.getAllIngredient();
-		}
-	
-	
-	
+	}
+
+
+
 	//cette methode a definit la partie de l'url d'acces a webservice sous path /insertionIngredient
 	//elle s'utilise avec POST
 	//elle prend du JSON en entree
@@ -50,7 +50,7 @@ public class IngredientResource {
 		return service.insertIngredient(ingredient);
 	}	
 
-	
+
 	//cette methode a definit la partie de l'url d'acces a webservice sous path /updateIngredient
 	//elle s'utilise avec POST
 	//elle prend du JSON en entree
@@ -60,9 +60,9 @@ public class IngredientResource {
 	public Ingredient updateIngredient (Ingredient ingredient, @PathParam("id") int id) throws Exception {
 		// On demande au service d'executer la methode "update" 
 		return service.updateIngredient(ingredient, id);
-		
+
 	}
-	
+
 	//cette methode a definit la partie de l'url d'acces a webservice sous path /deleteIngredient/{id}
 	//elle s'utilise avec DELETE
 	//elle prend du JSON en entree
@@ -71,27 +71,36 @@ public class IngredientResource {
 	@Consumes(MediaType.APPLICATION_JSON) 
 	public boolean deleteIngredient (@PathParam("id") int id) throws Exception {
 		boolean resultal = false;
-		
+
 		try {
-		// On demande au service d'executer la methode "remove" 
-		service.removeIngredientByID(id);
-		resultal = true;
-		return resultal;
+			// On demande au service d'executer la methode "remove" 
+			service.removeIngredientByID(id);
+			resultal = true;
+			return resultal;
 		} catch (Exception e) {
 			throw new Exception("ne peut pas supprimer cette categorie " + e.toString());
 		}
 	}
-	
-	//cette methode a definit la partie de l'url d'acces a webservice sous path //findbyIDIngredient/{id}
+
+	//cette methode a definit la partie de l'url d'acces a webservice sous path /findbyProduitID/{id}
 	//elle s'utilise avec GET
 	//elle prend du JSON en entree
 	@Path("/findbyProduitID/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Ingredient> getIngredientByProduitID (@PathParam("id") int id) throws Exception {
-		// On demande au service d'executer la methode "findById(id)" et retour la ingredient avec id recherche
+		// On demande au service d'executer la methode "findById(id)" et retour la liste des ingredients avec id recherche
 		return service.findByProduitId(id);
 	}
 
-
+	//cette methode a definit la partie de l'url d'acces a webservice sous path /findbyID/{id}
+	//elle s'utilise avec GET
+	//elle prend du JSON en entree
+	@Path("/findbyID/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Ingredient getIngredientByID (@PathParam("id") int id) throws Exception {
+		// On demande au service d'executer la methode "findById(id)" et retour la ingredient avec id recherche
+		return service.findById(id);
+	}
 }

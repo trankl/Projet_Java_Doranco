@@ -97,8 +97,6 @@ public class MatierePremiere  implements Serializable{
 		this.mp_marque = mp_marque;
 	}
 
-	
-	
 	public Double getMp_prix() {
 		return mp_prix;
 	}

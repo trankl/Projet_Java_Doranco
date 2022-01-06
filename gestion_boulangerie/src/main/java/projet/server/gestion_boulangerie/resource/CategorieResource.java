@@ -71,12 +71,12 @@ public class CategorieResource {
 	@Consumes(MediaType.APPLICATION_JSON) 
 	public boolean deleteCategorie (@PathParam("id") int id) throws Exception {
 		boolean resultal = false;
-		
+
 		try {
-		// On demande au service d'executer la methode "remove" 
-		service.removeCategorie(id);
-		resultal = true;
-		return resultal;
+			// On demande au service d'executer la methode "remove" 
+			service.removeCategorie(id);
+			resultal = true;
+			return resultal;
 		} catch (Exception e) {
 			throw new Exception("ne peut pas supprimer cette categorie " + e.toString());
 		}

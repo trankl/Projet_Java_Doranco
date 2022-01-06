@@ -49,11 +49,11 @@ public class Produit implements Serializable{
 	}
 
 	//Constructor avec 3 parametres
-	public Produit(String produit_nom, double produit_prix, int produit_quantite) {
-		this.produit_nom = produit_nom;
-		this.produit_prix = produit_prix;
-		this.produit_quantite = produit_quantite;
-	}
+//	public Produit(String produit_nom, double produit_prix, int produit_quantite) {
+//		this.produit_nom = produit_nom;
+//		this.produit_prix = produit_prix;
+//		this.produit_quantite = produit_quantite;
+//	}
 	
 	
 	//Constructor avec 4 parametres
