@@ -72,7 +72,7 @@ public class Boulangerie_clientRMI {
 			user = new Utilisateur(user_nom, user_pass);
 
 			// appeller fonction veririfer utilisateur et mettre son resultat dans l'objet type boolean
-			verify = verifierUser(user, listUsers);
+			verify = verifierUserConnexion(user, listUsers);
 
 			// tant que verify = faux, il faut reconnecter
 			while (!verify) {
@@ -92,7 +92,7 @@ public class Boulangerie_clientRMI {
 					user_pass = clavier.nextLine();
 
 					user = new Utilisateur(user_nom, user_pass);
-					verify = verifierUser(user, listUsers);}
+					verify = verifierUserConnexion(user, listUsers);}
 
 			}
 			// si verify est vrai, on continue le programme et faire les actions
@@ -863,7 +863,7 @@ public class Boulangerie_clientRMI {
 									} else if (reponseModifierUser ==2) {
 
 										System.out.println(" Mot de passe = ? ");
-										//clavier = new Scanner(System.in);
+										clavier = new Scanner(System.in);
 										utilisateur_pass= clavier.nextLine();
 										utilisateur.setUser_password(utilisateur_pass);
 
@@ -877,12 +877,20 @@ public class Boulangerie_clientRMI {
 										System.out.println(" Choisissez 1 ou 2, svp!");
 									}
 								}
-
-								// appeller methode modifier utilisateur par son id et mettre dans objet utilisateur
+								listUsers= stub.getAllUtilisateur();
+								
+								boolean checkUtilisateur = verifierUser(utilisateur, listUsers);
+								
+								if (!checkUtilisateur) {
+										// appeller methode modifier utilisateur par son id et mettre dans objet utilisateur
 								utilisateur = stub.updateUtilisateur(utilisateur, utilisateur_id);
 
 								System.out.println(" Cet utilisateur est modifiee");
 								System.out.println(" Utilisateur est : " + utilisateur);
+								}else {
+									System.out.println(" Cet utilisateur est existe, à changer autre nom!");
+								}
+							
 
 							} else if (actionListUsers.equals(supprimer)) {
 								System.out.println(" Vous avez choisi SUPPRIMER UTILISATEUR. Quel Utilisateur à modifier? Donnez moi son id?");
@@ -1152,7 +1160,7 @@ public class Boulangerie_clientRMI {
 		return check;
 	}
 
-	private static boolean verifierUser(Utilisateur user, List<Utilisateur> listUsers) {
+	private static boolean verifierUserConnexion(Utilisateur user, List<Utilisateur> listUsers) {
 
 		boolean check = false; 
 		String user_name = user.getUser_nom();
@@ -1160,6 +1168,21 @@ public class Boulangerie_clientRMI {
 
 		for (Utilisateur utilisateur : listUsers) {
 			if (utilisateur.getUser_nom().equals(user_name)&& utilisateur.getUser_password().equals(user_pass)) {
+				check = true;
+				break;
+			}		
+		}
+
+		return check;
+	}
+	
+	private static boolean verifierUser(Utilisateur user, List<Utilisateur> listUsers) {
+
+		boolean check = false; 
+		String user_name = user.getUser_nom().toUpperCase();
+
+		for (Utilisateur utilisateur : listUsers) {
+			if (user_name.equals(utilisateur.getUser_nom().toUpperCase())) {
 				check = true;
 				break;
 			}		
